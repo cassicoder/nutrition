@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#ffffff !important;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Nutrition</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#ffffff;--surface:#f5f5f7;--text:#1d1d1f;--text2:#86868b;--text3:#c7c7cc;
+  --green:#34c759;--red:#ff3b30;--blue:#007aff;--orange:#ff9500;--purple:#af52de;
+  --bar-bg:#e8e8ed;--divider:#e5e5ea;--overlay:rgba(0,0,0,.3);--sheet:#fff;
+}
+.dark{
+  --bg:#000;--surface:#1c1c1e;--text:#f5f5f7;--text2:#98989f;--text3:#48484a;
+  --green:#30d158;--red:#ff453a;--blue:#0a84ff;--orange:#ff9f0a;--purple:#bf5af2;
+  --bar-bg:#38383a;--divider:#38383a;--overlay:rgba(0,0,0,.5);--sheet:#2c2c2e;
+}
+html,body{background:var(--bg) !important;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;transition:background .25s,color .25s}
+.app{max-width:390px;margin:0 auto;padding:20px 16px 60px}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.nav h1{font-size:28px;font-weight:700;letter-spacing:-.4px}
+.nr{display:flex;gap:8px;align-items:center}
+.ib{
+  width:32px;height:32px;border-radius:50%;border:none;cursor:pointer;
+  background:var(--surface);display:flex;align-items:center;justify-content:center;
+  font-family:inherit;color:var(--text);
+}
+.ib:active{opacity:.5}
+.ib svg{width:15px;height:15px;display:block}
+.pill{
+  display:flex;align-items:center;gap:5px;
+  background:var(--surface);border:none;color:var(--text);
+  font:500 13px/1 -apple-system,sans-serif;
+  padding:7px 12px;border-radius:18px;cursor:pointer;
+}
+.pill:active{opacity:.5}
+.pill svg{width:8px;height:5px;flex-shrink:0;transition:transform .25s}
+.pill.open svg{transform:rotate(180deg)}
+
+/* CALENDAR GRID */
+.cal-grid{margin-bottom:24px}
+.cal-head{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:4px}
+.cal-head span{text-align:center;font-size:11px;font-weight:500;color:var(--text3);padding:4px 0}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cd{
+  aspect-ratio:1;border-radius:50%;border:none;cursor:pointer;
+  background:transparent;font-family:inherit;font-size:15px;font-weight:500;
+  color:var(--text3);display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.cd.data{color:var(--text)}
+.cd.sel{background:var(--text);color:var(--bg)}
+.cd.today:not(.sel){color:var(--blue);font-weight:700}
+.cd.data:not(.sel)::after{content:'';position:absolute;bottom:3px;width:4px;height:4px;border-radius:50%;background:var(--green)}
+.cd.empty{cursor:default}
+
+/* CALORIES */
+.cal-section{margin-bottom:28px}
+.cal-top{display:flex;align-items:baseline;gap:6px;margin-bottom:4px}
+.cal-num{font-size:44px;font-weight:700;letter-spacing:-2px;line-height:1}
+.cal-of{font-size:15px;color:var(--text2);font-weight:400}
+.cal-bar{width:100%;height:6px;background:var(--bar-bg);border-radius:3px;margin:10px 0;overflow:hidden}
+.cal-fill{height:100%;border-radius:3px;transition:width .6s cubic-bezier(.4,0,.2,1)}
+.cal-status{font-size:14px;font-weight:600}
+.cal-status.g{color:var(--green)}.cal-status.r{color:var(--red)}.cal-status.z{color:var(--text3)}
+
+/* MACROS */
+.macros{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.m-row{display:flex;align-items:center;gap:10px}
+.m-label{width:56px;font-size:13px;font-weight:500;color:var(--text2)}
+.m-bar{flex:1;height:5px;background:var(--bar-bg);border-radius:3px;overflow:hidden}
+.m-fill{height:100%;border-radius:3px;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.m-fill.p{background:var(--blue)}.m-fill.c{background:var(--orange)}.m-fill.f{background:var(--purple)}
+.m-val{width:70px;text-align:right;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.m-val span{font-weight:400;color:var(--text2)}
+
+/* MEALS */
+.meals-h{font-size:18px;font-weight:700;letter-spacing:-.2px;margin-bottom:12px}
+.mg{margin-bottom:12px}.mg:last-child{margin-bottom:0}
+.mt{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.mt-d{width:5px;height:5px;border-radius:50%}
+.mt-d.breakfast{background:var(--green)}.mt-d.lunch{background:var(--orange)}.mt-d.dinner{background:var(--blue)}.mt-d.snacks{background:var(--purple)}
+.mt-l{font-size:12px;font-weight:600;color:var(--text2);text-transform:capitalize}
+.mi{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--divider)}
+.mi:last-child{border-bottom:none}
+.mi-l{flex:1;margin-right:10px}
+.mi-n{font-size:15px;font-weight:400;line-height:1.3}
+.mi-tg{display:flex;gap:6px;margin-top:2px}
+.mi-t{font-size:11px;color:var(--text2)}
+.mi-c{font-size:15px;font-weight:600;color:var(--text2);font-variant-numeric:tabular-nums}
+.nm{font-size:14px;color:var(--text3)}
+
+/* SHEET */
+.ov{position:fixed;inset:0;z-index:30;opacity:0;pointer-events:none;transition:opacity .25s;background:var(--overlay)}
+.ov.on{opacity:1;pointer-events:all}
+.sh{
+  position:fixed;bottom:0;left:0;right:0;z-index:31;
+  background:var(--sheet);border-radius:14px 14px 0 0;
+  max-height:50vh;display:flex;flex-direction:column;
+  transform:translateY(100%);transition:transform .4s cubic-bezier(.32,.72,0,1);
+}
+.sh.on{transform:translateY(0)}
+.sh-bar{display:flex;justify-content:center;padding:8px 0 4px}
+.sh-bar span{width:36px;height:5px;border-radius:3px;background:var(--text3)}
+.sh-t{font-size:13px;font-weight:600;text-align:center;color:var(--text2);padding:2px 0 10px;text-transform:uppercase;letter-spacing:.5px}
+.sh-l{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 16px 40px;flex:1}
+.sh-i{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 16px;border-radius:12px;cursor:pointer;transition:background .1s;margin-bottom:1px;
+}
+.sh-i:active{background:var(--surface)}
+.sh-i.on{background:rgba(0,122,255,.08)}
+.sh-il{font-size:17px;font-weight:400;color:var(--text)}
+.sh-i.on .sh-il{color:var(--blue);font-weight:500}
+.sh-ck{font-weight:600;color:var(--blue);opacity:0;font-size:15px}
+.sh-i.on .sh-ck{opacity:1}
+</style>
+</head>
+<body style="background:#ffffff !important;color:#1d1d1f !important;">
+<div class="app" id="app"></div>
+<div class="ov" id="ov"></div>
+<div class="sh" id="sh">
+  <div class="sh-bar"><span></span></div>
+  <div class="sh-t">Month</div>
+  <div class="sh-l" id="sl"></div>
+</div>
+<script>
+document.documentElement.style.setProperty('background','#ffffff','important');
+document.body.style.setProperty('background','#ffffff','important');
+try{if(window.frameElement)window.frameElement.style.background='#ffffff'}catch(e){}
+
+const G=2100,PG=190,CG=210,FG=70;
+const data={};
+let sel=new Date().toISOString().slice(0,10),vM=new Date().getMonth(),vY=new Date().getFullYear(),shO=false;
+const $=id=>document.getElementById(id);
+function tot(d){const day=data[d];if(!day)return{cal:0,p:0,c:0,f:0,meals:null};let t={cal:0,p:0,c:0,f:0};for(const k of Object.keys(day))for(const m of day[k]){t.cal+=m.cal;t.p+=m.p;t.c+=m.c;t.f+=m.f}return{...t,meals:day}}
+const dim=(y,m)=>new Date(y,m+1,0).getDate();
+const pad=n=>String(n).padStart(2,'0');
+const ds=(y,m,d)=>`${y}-${pad(m+1)}-${pad(d)}`;
+const ml=(y,m)=>new Date(y,m).toLocaleDateString('en-US',{month:'long',year:'numeric'});
+const sm=(y,m)=>new Date(y,m).toLocaleDateString('en-US',{month:'short'});
+const firstDow=(y,m)=>new Date(y,m,1).getDay();
+function months(){const ms=[],now=new Date();for(let i=12;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);ms.push({y:d.getFullYear(),m:d.getMonth()})}Object.keys(data).forEach(s=>{const[y,m]=s.split('-').map(Number);if(!ms.find(x=>x.y===y&&x.m===m-1))ms.unshift({y,m:m-1})});ms.sort((a,b)=>a.y===b.y?a.m-b.m:a.y-b.y);return ms}
+function sheet(o){shO=typeof o==='boolean'?o:!shO;$('ov').classList.toggle('on',shO);$('sh').classList.toggle('on',shO);const b=document.querySelector('.pill');if(b)b.classList.toggle('open',shO);if(shO)renderSheet()}
+function renderSheet(){const ms=months();$('sl').innerHTML=ms.map(o=>`<div class="sh-i${o.y===vY&&o.m===vM?' on':''}" data-y="${o.y}" data-m="${o.m}"><span class="sh-il">${ml(o.y,o.m)}</span><span class="sh-ck">&#10003;</span></div>`).join('');$('sl').querySelectorAll('.sh-i').forEach(el=>el.addEventListener('click',()=>{vY=+el.dataset.y;vM=+el.dataset.m;sel=ds(vY,vM,1);sheet(false);render()}));setTimeout(()=>{const a=$('sl').querySelector('.on');if(a)a.scrollIntoView({block:'center'})},40)}
+function toggleTheme(){
+  const isDark=!document.body.classList.contains('dark');
+  document.body.classList.toggle('dark');
+  const bg=isDark?'#000000':'#ffffff';const col=isDark?'#f5f5f7':'#1d1d1f';
+  document.documentElement.style.setProperty('background',bg,'important');
+  document.body.style.setProperty('background',bg,'important');
+  document.body.style.setProperty('color',col,'important');
+  render();
+}
+
+const sunI=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+const moonI=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+const chevI=`<svg viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+
+function render(){
+  const today=new Date().toISOString().slice(0,10);
+  const dk=document.body.classList.contains('dark');
+  const t=tot(sel);
+  const rem=G-t.cal,over=t.cal>G,pct=Math.min(t.cal/G,1);
+  const barColor=t.cal===0?'var(--text3)':over?'var(--red)':'var(--green)';
+  const days=dim(vY,vM);
+  const fDow=firstDow(vY,vM);
+
+  // Calendar grid
+  const heads=['Su','Mo','Tu','We','Th','Fr','Sa'].map(d=>`<span>${d}</span>`).join('');
+  let cells='';
+  for(let i=0;i<fDow;i++)cells+=`<button class="cd empty"></button>`;
+  for(let d=1;d<=days;d++){
+    const s=ds(vY,vM,d);
+    let c='cd';
+    if(s===sel)c+=' sel';
+    if(s===today)c+=' today';
+    if(data[s])c+=' data';
+    cells+=`<button class="${c}" data-d="${s}">${d}</button>`;
+  }
+
+  const pp=Math.round((t.p/PG)*100),cp=Math.round((t.c/CG)*100),fp=Math.round((t.f/FG)*100);
+
+  let mh='';
+  if(t.meals){for(const type of['breakfast','lunch','dinner','snacks']){if(!t.meals[type]||!t.meals[type].length)continue;mh+=`<div class="mg"><div class="mt"><span class="mt-d ${type}"></span><span class="mt-l">${type}</span></div>`;for(const m of t.meals[type])mh+=`<div class="mi"><div class="mi-l"><div class="mi-n">${m.name}</div><div class="mi-tg"><span class="mi-t">${m.p}p</span><span class="mi-t">${m.c}c</span><span class="mi-t">${m.f}f</span></div></div><div class="mi-c">${m.cal}</div></div>`;mh+=`</div>`}}
+  if(!mh)mh='<div class="nm">No meals</div>';
+
+  const rc=t.cal===0?'z':over?'r':'g';
+  const rl=t.cal===0?`${G.toLocaleString()} remaining`:over?`${Math.abs(rem).toLocaleString()} over`:`${Math.abs(rem).toLocaleString()} remaining`;
+
+  $('app').innerHTML=`
+    <div class="nav">
+      <h1>Nutrition</h1>
+      <div class="nr">
+        <button class="ib" id="tb">${dk?sunI:moonI}</button>
+        <button class="pill${shO?' open':''}" id="mb">${sm(vY,vM)} ${vY} ${chevI}</button>
+      </div>
+    </div>
+
+    <div class="cal-grid">
+      <div class="cal-head">${heads}</div>
+      <div class="cal-days">${cells}</div>
+    </div>
+
+    <div class="cal-section">
+      <div class="cal-top">
+        <div class="cal-num">${t.cal.toLocaleString()}</div>
+        <div class="cal-of">/ ${G.toLocaleString()} kcal</div>
+      </div>
+      <div class="cal-bar"><div class="cal-fill" style="width:${pct*100}%;background:${barColor}"></div></div>
+      <div class="cal-status ${rc}">${rl}</div>
+    </div>
+
+    <div class="macros">
+      <div class="m-row"><div class="m-label">Protein</div><div class="m-bar"><div class="m-fill p" style="width:${Math.min(pp,100)}%"></div></div><div class="m-val">${Math.round(t.p)} <span>/${PG}g</span></div></div>
+      <div class="m-row"><div class="m-label">Carbs</div><div class="m-bar"><div class="m-fill c" style="width:${Math.min(cp,100)}%"></div></div><div class="m-val">${Math.round(t.c)} <span>/${CG}g</span></div></div>
+      <div class="m-row"><div class="m-label">Fat</div><div class="m-bar"><div class="m-fill f" style="width:${Math.min(fp,100)}%"></div></div><div class="m-val">${Math.round(t.f)} <span>/${FG}g</span></div></div>
+    </div>
+
+    <div class="meals">
+      <div class="meals-h">Meals</div>
+      ${mh}
+    </div>`;
+
+  document.querySelectorAll('.cd:not(.empty)').forEach(el=>el.addEventListener('click',()=>{sel=el.dataset.d;render()}));
+  $('mb').addEventListener('click',()=>sheet());
+  $('tb').addEventListener('click',toggleTheme);
+}
+$('ov').addEventListener('click',()=>sheet(false));
+render();
+</script>
+</body>
+</html>
