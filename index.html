@@ -75,7 +75,6 @@ html,body{background:var(--bg)!important;color:var(--text);font-family:-apple-sy
 .macros{display:flex;gap:8px;margin-bottom:28px;animation:fadeUp .5s .2s ease both}
 .macro-card{flex:1;background:var(--surface);border-radius:14px;padding:12px;text-align:center;transition:transform .2s}
 .macro-card:active{transform:scale(.96)}
-.macro-icon{font-size:16px;margin-bottom:4px}
 .macro-val{font-size:18px;font-weight:800;letter-spacing:-.5px}
 .macro-label{font-size:10px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.3px;margin-top:1px}
 .macro-bar{width:100%;height:3px;background:var(--bar-bg);border-radius:2px;margin-top:6px;overflow:hidden}
@@ -89,9 +88,10 @@ html,body{background:var(--bg)!important;color:var(--text);font-family:-apple-sy
 .meal-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;transition:background .15s;-webkit-user-select:none;user-select:none}
 .meal-header:active{background:var(--card-hover)}
 .mh-left{display:flex;align-items:center;gap:10px}
-.mh-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px}
-.mh-icon.breakfast{background:rgba(48,209,88,.15)}.mh-icon.lunch{background:rgba(255,159,10,.15)}
-.mh-icon.dinner{background:rgba(10,132,255,.15)}.mh-icon.snacks{background:rgba(191,82,222,.15)}
+.mh-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+.mh-icon svg{width:16px;height:16px}
+.mh-icon.breakfast{background:rgba(48,209,88,.15);color:var(--green)}.mh-icon.lunch{background:rgba(255,159,10,.15);color:var(--orange)}
+.mh-icon.dinner{background:rgba(10,132,255,.15);color:var(--blue)}.mh-icon.snacks{background:rgba(191,82,222,.15);color:var(--purple)}
 .mh-info{display:flex;flex-direction:column}
 .mh-name{font-size:15px;font-weight:700;text-transform:capitalize}
 .mh-count{font-size:11px;color:var(--text2);font-weight:500}
@@ -111,7 +111,6 @@ html,body{background:var(--bg)!important;color:var(--text);font-family:-apple-sy
 .mi:not(:last-child){border-bottom:1px solid var(--divider)}
 .mi-img{width:42px;height:42px;border-radius:10px;overflow:hidden;flex-shrink:0;margin-right:12px;background:var(--bar-bg);display:flex;align-items:center;justify-content:center}
 .mi-img img{width:100%;height:100%;object-fit:cover}
-.mi-img .emoji{font-size:22px}
 .mi-info{flex:1;min-width:0}
 .mi-name{font-size:15px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mi-tags{display:flex;gap:6px;margin-top:2px}
@@ -127,7 +126,6 @@ html,body{background:var(--bg)!important;color:var(--text);font-family:-apple-sy
 .modal-bar span{width:36px;height:5px;border-radius:3px;background:var(--text3)}
 .modal-img{width:100%;height:180px;overflow:hidden;position:relative}
 .modal-img img{width:100%;height:100%;object-fit:cover}
-.modal-img .emoji-big{font-size:72px;display:flex;align-items:center;justify-content:center;height:100%;background:var(--surface)}
 .modal-body{padding:20px}
 .modal-name{font-size:22px;font-weight:800;letter-spacing:-.4px;margin-bottom:4px}
 .modal-meal{font-size:13px;color:var(--text2);font-weight:600;text-transform:capitalize;margin-bottom:16px}
@@ -138,7 +136,6 @@ html,body{background:var(--bg)!important;color:var(--text);font-family:-apple-sy
 
 /* NO MEALS */
 .nm{text-align:center;padding:40px 20px;animation:fadeIn .5s ease both}
-.nm-icon{font-size:40px;margin-bottom:8px;opacity:.4}
 .nm-text{font-size:14px;color:var(--text3);font-weight:500}
 
 /* SHEET */
@@ -176,25 +173,81 @@ html,body{background:var(--bg)!important;color:var(--text);font-family:-apple-sy
 const G=2100,PG=190,CG=210,FG=70;
 
 // ===== MEAL DATA — Claude updates this line =====
-const data={"2026-05-04":{"lunch":[{"name":"4 Eggs","cal":280,"p":24,"c":0,"f":20,"img":"🥚"}]}};
+const data={"2026-05-04":{"lunch":[{"name":"4 Eggs","cal":280,"p":24,"c":0,"f":20}]}};
 // ===== END MEAL DATA =====
 
-const MEAL_ICONS={breakfast:'🌅',lunch:'☀️',dinner:'🌙',snacks:'🍿'};
-
-const FOOD_EMOJI={
-  egg:'🥚',eggs:'🥚',chicken:'🍗',rice:'🍚',salad:'🥗',fish:'🐟',salmon:'🐟',steak:'🥩',beef:'🥩',
-  pasta:'🍝',bread:'🍞',sandwich:'🥪',burger:'🍔',pizza:'🍕',taco:'🌮',sushi:'🍣',shrimp:'🍤',
-  milk:'🥛',yogurt:'🥛',cheese:'🧀',avocado:'🥑',banana:'🍌',apple:'🍎',orange:'🍊',berry:'🫐',
-  smoothie:'🥤',coffee:'☕',tea:'🍵',water:'💧',juice:'🧃',protein:'💪',shake:'🥤',bar:'🍫',
-  oat:'🌾',oatmeal:'🌾',cereal:'🥣',pancake:'🥞',waffle:'🥞',bacon:'🥓',toast:'🍞',
-  cookie:'🍪',cake:'🍰',ice:'🍦',chocolate:'🍫',candy:'🍬',donut:'🍩',kitkat:'🍫',matcha:'🍵',
-  fries:'🍟',chips:'🍟',nuts:'🥜',almond:'🥜',peanut:'🥜',soup:'🍜',ramen:'🍜',noodle:'🍜',
-  potato:'🥔',corn:'🌽',broccoli:'🥦',carrot:'🥕',tomato:'🍅',pepper:'🌶️',
-  pork:'🥩',lamb:'🥩',turkey:'🦃',wing:'🍗',rib:'🍖',
-  default:'🍽️'
+// Meal type SVG icons (no emoji)
+const MEAL_ICONS={
+  breakfast:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v4M4.93 4.93l2.83 2.83M2 12h4M4.93 19.07l2.83-2.83M12 18v4M17.24 17.24l2.83 2.83M18 12h4M17.24 6.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>`,
+  lunch:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>`,
+  dinner:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`,
+  snacks:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>`
 };
 
-function getEmoji(name){const n=name.toLowerCase();for(const[k,v]of Object.entries(FOOD_EMOJI)){if(k!=='default'&&n.includes(k))return v}return FOOD_EMOJI.default}
+// Real food image mapping — Unsplash source (free, no key)
+const FOOD_IMAGES={
+  egg:'https://images.unsplash.com/photo-1582169296194-e4d644c48063?w=200&h=200&fit=crop',
+  eggs:'https://images.unsplash.com/photo-1582169296194-e4d644c48063?w=200&h=200&fit=crop',
+  chicken:'https://images.unsplash.com/photo-1598103442097-8b74f8e1c1bd?w=200&h=200&fit=crop',
+  rice:'https://images.unsplash.com/photo-1516684732162-798a0062be99?w=200&h=200&fit=crop',
+  salad:'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200&h=200&fit=crop',
+  fish:'https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=200&h=200&fit=crop',
+  salmon:'https://images.unsplash.com/photo-1485921325833-c519f76c4927?w=200&h=200&fit=crop',
+  steak:'https://images.unsplash.com/photo-1600891964092-4316c288032e?w=200&h=200&fit=crop',
+  beef:'https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=200&h=200&fit=crop',
+  pasta:'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=200&h=200&fit=crop',
+  bread:'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&h=200&fit=crop',
+  sandwich:'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=200&h=200&fit=crop',
+  burger:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&h=200&fit=crop',
+  pizza:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=200&h=200&fit=crop',
+  taco:'https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=200&h=200&fit=crop',
+  sushi:'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?w=200&h=200&fit=crop',
+  shrimp:'https://images.unsplash.com/photo-1565680018093-ebb6e4c15b4c?w=200&h=200&fit=crop',
+  milk:'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=200&h=200&fit=crop',
+  yogurt:'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=200&h=200&fit=crop',
+  cheese:'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=200&h=200&fit=crop',
+  avocado:'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=200&h=200&fit=crop',
+  banana:'https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=200&h=200&fit=crop',
+  apple:'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=200&h=200&fit=crop',
+  orange:'https://images.unsplash.com/photo-1547514701-42782101795e?w=200&h=200&fit=crop',
+  berry:'https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=200&h=200&fit=crop',
+  smoothie:'https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=200&h=200&fit=crop',
+  coffee:'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=200&h=200&fit=crop',
+  tea:'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=200&h=200&fit=crop',
+  protein:'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?w=200&h=200&fit=crop',
+  shake:'https://images.unsplash.com/photo-1505252585461-04db1eb84625?w=200&h=200&fit=crop',
+  oat:'https://images.unsplash.com/photo-1517673400267-0251440c45dc?w=200&h=200&fit=crop',
+  oatmeal:'https://images.unsplash.com/photo-1517673400267-0251440c45dc?w=200&h=200&fit=crop',
+  pancake:'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=200&h=200&fit=crop',
+  waffle:'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=200&h=200&fit=crop',
+  bacon:'https://images.unsplash.com/photo-1528607929212-2636ec44253e?w=200&h=200&fit=crop',
+  toast:'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=200&h=200&fit=crop',
+  cookie:'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=200&h=200&fit=crop',
+  cake:'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=200&h=200&fit=crop',
+  chocolate:'https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=200&h=200&fit=crop',
+  donut:'https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&h=200&fit=crop',
+  kitkat:'https://images.unsplash.com/photo-1621939514649-280e2ee25f60?w=200&h=200&fit=crop',
+  matcha:'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?w=200&h=200&fit=crop',
+  fries:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=200&h=200&fit=crop',
+  chips:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=200&h=200&fit=crop',
+  nuts:'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=200&h=200&fit=crop',
+  almond:'https://images.unsplash.com/photo-1508061253366-f7da158b6d46?w=200&h=200&fit=crop',
+  soup:'https://images.unsplash.com/photo-1547592166-23ac45744acd?w=200&h=200&fit=crop',
+  ramen:'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=200&h=200&fit=crop',
+  noodle:'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=200&h=200&fit=crop',
+  potato:'https://images.unsplash.com/photo-1518977676601-b53f82ber633?w=200&h=200&fit=crop',
+  corn:'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=200&h=200&fit=crop',
+  broccoli:'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=200&h=200&fit=crop',
+  pork:'https://images.unsplash.com/photo-1432139509613-5c4255a1d277?w=200&h=200&fit=crop',
+  turkey:'https://images.unsplash.com/photo-1574672280600-4accfa5b6f98?w=200&h=200&fit=crop',
+  wing:'https://images.unsplash.com/photo-1527477396000-e27163b4bde4?w=200&h=200&fit=crop',
+  calamari:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=200&h=200&fit=crop',
+  squid:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=200&h=200&fit=crop',
+  default:'https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=200&h=200&fit=crop'
+};
+
+function getFoodImg(name){const n=name.toLowerCase();for(const[k,v]of Object.entries(FOOD_IMAGES)){if(k!=='default'&&n.includes(k))return v}return FOOD_IMAGES.default}
+function getFoodImgLarge(name){return getFoodImg(name).replace('w=200&h=200','w=600&h=400')}
 
 let sel=new Date().toISOString().slice(0,10),vM=new Date().getMonth(),vY=new Date().getFullYear(),shO=false,openSections={};
 const $=id=>document.getElementById(id);
@@ -214,10 +267,9 @@ function sheet(o){shO=typeof o==='boolean'?o:!shO;$('ov').classList.toggle('on',
 function renderSheet(){const ms=months();$('sl').innerHTML=ms.map(o=>`<div class="sh-i${o.y===vY&&o.m===vM?' on':''}" data-y="${o.y}" data-m="${o.m}"><span class="sh-il">${ml(o.y,o.m)}</span><span class="sh-ck">&#10003;</span></div>`).join('');$('sl').querySelectorAll('.sh-i').forEach(el=>el.addEventListener('click',()=>{vY=+el.dataset.y;vM=+el.dataset.m;sel=ds(vY,vM,1);sheet(false);render()}));setTimeout(()=>{const a=$('sl').querySelector('.on');if(a)a.scrollIntoView({block:'center'})},40)}
 
 function showModal(item,type){
-  const emoji=item.img||getEmoji(item.name);
-  const hasUrl=typeof item.img==='string'&&item.img.startsWith('http');
+  const imgUrl=item.img||getFoodImgLarge(item.name);
   $('mc').innerHTML=`
-    <div class="modal-img">${hasUrl?`<img src="${item.img}" alt="${item.name}">`:`<div class="emoji-big">${emoji}</div>`}</div>
+    <div class="modal-img"><img src="${imgUrl}" alt="${item.name}"></div>
     <div class="modal-body">
       <div class="modal-name">${item.name}</div>
       <div class="modal-meal">${type}</div>
@@ -299,10 +351,9 @@ function render(){
               <div class="ms-tag"><span>${mt.f}g</span> fat</div>
             </div>
             ${items.map((item,i)=>{
-              const hasUrl=typeof item.img==='string'&&item.img.startsWith('http');
-              const imgHTML=hasUrl?`<img src="${item.img}" alt="">`:`<div class="emoji">${item.img||getEmoji(item.name)}</div>`;
+              const imgUrl=item.img||getFoodImg(item.name);
               return `<div class="mi" data-type="${type}" data-idx="${i}">
-                <div class="mi-img">${imgHTML}</div>
+                <div class="mi-img"><img src="${imgUrl}" alt=""></div>
                 <div class="mi-info">
                   <div class="mi-name">${item.name}</div>
                   <div class="mi-tags">
@@ -317,7 +368,7 @@ function render(){
         </div>`;
     }
   }
-  if(!mealsHTML)mealsHTML=`<div class="nm"><div class="nm-icon">🍽️</div><div class="nm-text">No meals logged</div></div>`;
+  if(!mealsHTML)mealsHTML=`<div class="nm"><div class="nm-text">No meals logged</div></div>`;
 
   const rc=t.cal===0?'z':over?'r':'g';
   const rl=t.cal===0?`${G.toLocaleString()} remaining`:over?`${Math.abs(rem).toLocaleString()} over`:`${Math.abs(rem).toLocaleString()} remaining`;
@@ -352,19 +403,16 @@ function render(){
     </div>
     <div class="macros">
       <div class="macro-card">
-        <div class="macro-icon">💪</div>
         <div class="macro-val" style="color:var(--blue)">${Math.round(t.p)}g</div>
         <div class="macro-label">protein</div>
         <div class="macro-bar"><div class="macro-fill p" style="--target-width:${pp}%"></div></div>
       </div>
       <div class="macro-card">
-        <div class="macro-icon">⚡</div>
         <div class="macro-val" style="color:var(--orange)">${Math.round(t.c)}g</div>
         <div class="macro-label">carbs</div>
         <div class="macro-bar"><div class="macro-fill c" style="--target-width:${cp}%"></div></div>
       </div>
       <div class="macro-card">
-        <div class="macro-icon">🫧</div>
         <div class="macro-val" style="color:var(--purple)">${Math.round(t.f)}g</div>
         <div class="macro-label">fat</div>
         <div class="macro-bar"><div class="macro-fill f" style="--target-width:${fp}%"></div></div>
