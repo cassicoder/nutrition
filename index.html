@@ -133,7 +133,7 @@ document.body.style.setProperty('background','#ffffff','important');
 try{if(window.frameElement)window.frameElement.style.background='#ffffff'}catch(e){}
 
 const G=2100,PG=190,CG=210,FG=70;
-const data={};
+const data={"2026-05-04":{"lunch":[{"name":"4 Eggs","cal":280,"p":24,"c":0,"f":20}]}};
 let sel=new Date().toISOString().slice(0,10),vM=new Date().getMonth(),vY=new Date().getFullYear(),shO=false;
 const $=id=>document.getElementById(id);
 function tot(d){const day=data[d];if(!day)return{cal:0,p:0,c:0,f:0,meals:null};let t={cal:0,p:0,c:0,f:0};for(const k of Object.keys(day))for(const m of day[k]){t.cal+=m.cal;t.p+=m.p;t.c+=m.c;t.f+=m.f}return{...t,meals:day}}
