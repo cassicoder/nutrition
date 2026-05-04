@@ -29,6 +29,15 @@
         "c": 8,
         "f": 3
       }
+    ],
+    "snacks": [
+      {
+        "name": "Mango Sorbet Bowl (frozen mango, honey, heavy cream)",
+        "cal": 350,
+        "p": 3,
+        "c": 55,
+        "f": 14
+      }
     ]
   }
 }
