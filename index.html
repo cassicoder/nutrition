@@ -23,6 +23,7 @@
 }
 html,body{background:var(--bg)!important;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display',system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
 .app{max-width:430px;margin:0 auto;padding:16px 16px 80px;opacity:0;animation:fadeUp .5s ease forwards}
+.app.no-anim,.app.no-anim *{animation:none!important}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
@@ -163,6 +164,8 @@ async function loadData(){
     if(r.ok)data=await r.json();
   }catch(e){console.log('No data.json found, using empty')}
   render();
+  // After first paint, disable entrance animations so re-renders don't replay them
+  setTimeout(()=>{const a=$('app');if(a)a.classList.add('no-anim')},900);
 }
 
 // Food emoji mapping
