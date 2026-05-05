@@ -38,6 +38,36 @@
         "c": 55,
         "f": 14
       }
+    ],
+    "dinner": [
+      {
+        "name": "Salmon (glazed, ~150g)",
+        "cal": 310,
+        "p": 32,
+        "c": 8,
+        "f": 16
+      },
+      {
+        "name": "Sweet Potato (half medium, baked)",
+        "cal": 90,
+        "p": 2,
+        "c": 21,
+        "f": 0
+      },
+      {
+        "name": "Small Asian Slaw Salad",
+        "cal": 50,
+        "p": 1,
+        "c": 5,
+        "f": 3
+      },
+      {
+        "name": "Lactaid 2% Milk (346g)",
+        "cal": 178,
+        "p": 14,
+        "c": 20,
+        "f": 7
+      }
     ]
   }
 }
