@@ -28,20 +28,6 @@
         "p": 24,
         "c": 8,
         "f": 3
-      },
-      {
-        "name": "Glazed Salmon (115g)",
-        "cal": 237,
-        "p": 24,
-        "c": 6,
-        "f": 12
-      },
-      {
-        "name": "Plain Salmon (115g)",
-        "cal": 190,
-        "p": 26,
-        "c": 0,
-        "f": 9
       }
     ],
     "snacks": [
@@ -88,6 +74,31 @@
         "p": 21,
         "c": 30,
         "f": 11
+      }
+    ]
+  },
+  "2026-05-05": {
+    "lunch": [
+      {
+        "name": "Glazed Salmon (115g)",
+        "cal": 237,
+        "p": 24,
+        "c": 6,
+        "f": 12
+      },
+      {
+        "name": "Plain Salmon (115g)",
+        "cal": 190,
+        "p": 26,
+        "c": 0,
+        "f": 9
+      },
+      {
+        "name": "Daisy 2% Cottage Cheese (159g)",
+        "cal": 127,
+        "p": 19,
+        "c": 6,
+        "f": 2
       }
     ]
   }
