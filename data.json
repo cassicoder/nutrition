@@ -107,6 +107,64 @@
         "c": 0,
         "f": 20
       }
+    ],
+    "dinner": [
+      {
+        "name": "2 Corn Tortillas",
+        "cal": 120,
+        "p": 4,
+        "c": 24,
+        "f": 2
+      },
+      {
+        "name": "2 Flour Tortillas",
+        "cal": 200,
+        "p": 6,
+        "c": 32,
+        "f": 6
+      },
+      {
+        "name": "Shredded Chicken (~6oz)",
+        "cal": 280,
+        "p": 45,
+        "c": 2,
+        "f": 10
+      },
+      {
+        "name": "Cotija Cheese (~2 tbsp)",
+        "cal": 50,
+        "p": 3,
+        "c": 1,
+        "f": 4
+      },
+      {
+        "name": "Sour Cream (~2 tbsp)",
+        "cal": 60,
+        "p": 1,
+        "c": 2,
+        "f": 6
+      },
+      {
+        "name": "Spicy Sriracha Mayo (~2 tbsp)",
+        "cal": 180,
+        "p": 0,
+        "c": 1,
+        "f": 20
+      },
+      {
+        "name": "Ortega Taco Sauce + Tomatoes + Lettuce",
+        "cal": 25,
+        "p": 1,
+        "c": 5,
+        "f": 0
+      },
+      {
+        "name": "Tortilla Chips (~1.5oz)",
+        "cal": 210,
+        "p": 3,
+        "c": 26,
+        "f": 11
+      }
     ]
   }
 }
