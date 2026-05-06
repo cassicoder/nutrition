@@ -177,7 +177,7 @@
     ]
   },
   "2026-05-06": {
-    "breakfast": [
+    "lunch": [
       {
         "name": "Banana",
         "cal": 105,
@@ -191,9 +191,7 @@
         "p": 24,
         "c": 0,
         "f": 20
-      }
-    ],
-    "lunch": [
+      },
       {
         "name": "Air Fryer Chicken Breast (207g)",
         "cal": 342,
