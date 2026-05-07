@@ -233,6 +233,43 @@
         "c": 15,
         "f": 0
       }
+    ],
+    "lunch": [
+      {
+        "name": "Banana (medium)",
+        "cal": 105,
+        "p": 1,
+        "c": 27,
+        "f": 0
+      },
+      {
+        "name": "4 Eggs (0-cal spray)",
+        "cal": 280,
+        "p": 24,
+        "c": 2,
+        "f": 20
+      },
+      {
+        "name": "Tyson Rotisserie Chicken Strips (244g, air fryer)",
+        "cal": 320,
+        "p": 49,
+        "c": 6,
+        "f": 10
+      },
+      {
+        "name": "Honey drizzle (~1 tbsp)",
+        "cal": 64,
+        "p": 0,
+        "c": 17,
+        "f": 0
+      },
+      {
+        "name": "Butter (~1 tsp)",
+        "cal": 36,
+        "p": 0,
+        "c": 0,
+        "f": 4
+      }
     ]
   }
 }
