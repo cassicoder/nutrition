@@ -200,5 +200,23 @@
         "f": 7
       }
     ]
+  },
+  "2026-05-07": {
+    "dinner": [
+      {
+        "name": "Three Chefs Chicken Plate w/ Curry Sauce",
+        "cal": 750,
+        "p": 45,
+        "c": 75,
+        "f": 28
+      },
+      {
+        "name": "Mango Pear Banana Honey Whole Milk Smoothie",
+        "cal": 570,
+        "p": 13,
+        "c": 108,
+        "f": 12
+      }
+    ]
   }
 }
