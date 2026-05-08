@@ -321,6 +321,15 @@
         "c": 23,
         "f": 6
       }
+    ],
+    "snacks": [
+      {
+        "name": "Raw Rev Glo Protein Bar (Brownie Fudge)",
+        "cal": 180,
+        "p": 20,
+        "c": 19,
+        "f": 6
+      }
     ]
   }
 }
