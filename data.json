@@ -270,6 +270,57 @@
         "c": 0,
         "f": 4
       }
+    ],
+    "dinner": [
+      {
+        "name": "Salmon (~150g)",
+        "cal": 310,
+        "p": 32,
+        "c": 0,
+        "f": 20
+      },
+      {
+        "name": "White rice (~1 cup cooked)",
+        "cal": 205,
+        "p": 4,
+        "c": 45,
+        "f": 0
+      },
+      {
+        "name": "Avocado (~1/2, mixed in rice)",
+        "cal": 160,
+        "p": 2,
+        "c": 9,
+        "f": 15
+      },
+      {
+        "name": "Side salad (mixed greens, light dressing)",
+        "cal": 80,
+        "p": 2,
+        "c": 6,
+        "f": 5
+      },
+      {
+        "name": "Ferrero Rocher (1 piece)",
+        "cal": 75,
+        "p": 1,
+        "c": 6,
+        "f": 5
+      },
+      {
+        "name": "Small chocolate pieces (~2 squares)",
+        "cal": 90,
+        "p": 1,
+        "c": 10,
+        "f": 5
+      },
+      {
+        "name": "Costco Cookie Dough Protein Bar",
+        "cal": 190,
+        "p": 21,
+        "c": 23,
+        "f": 6
+      }
     ]
   }
 }
