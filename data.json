@@ -331,5 +331,23 @@
         "f": 6
       }
     ]
+  },
+  "2026-05-08": {
+    "snacks": [
+      {
+        "name": "Kirkland Protein Bar",
+        "cal": 180,
+        "p": 20,
+        "c": 0,
+        "f": 0
+      },
+      {
+        "name": "Kirkland Protein Bar",
+        "cal": 180,
+        "p": 20,
+        "c": 0,
+        "f": 0
+      }
+    ]
   }
 }
