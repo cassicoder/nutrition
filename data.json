@@ -347,6 +347,36 @@
         "p": 20,
         "c": 0,
         "f": 0
+      },
+      {
+        "name": "Night Owl Birthday Cake Cookie",
+        "cal": 520,
+        "p": 5,
+        "c": 68,
+        "f": 26
+      },
+      {
+        "name": "Whole Milk (8oz)",
+        "cal": 150,
+        "p": 8,
+        "c": 12,
+        "f": 8
+      }
+    ],
+    "dinner": [
+      {
+        "name": "Tonkotsu Ramen w/ Pork Belly & Egg (Good Cheek)",
+        "cal": 750,
+        "p": 35,
+        "c": 75,
+        "f": 32
+      },
+      {
+        "name": "Crab Rangoons (3) w/ Sweet Chili Sauce",
+        "cal": 310,
+        "p": 8,
+        "c": 32,
+        "f": 16
       }
     ]
   }
