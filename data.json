@@ -379,5 +379,97 @@
         "f": 16
       }
     ]
+  },
+  "2026-05-09": {
+    "breakfast": [
+      {
+        "name": "Mission Tortilla",
+        "cal": 70,
+        "p": 2,
+        "c": 12,
+        "f": 1.5
+      },
+      {
+        "name": "Mission Tortilla",
+        "cal": 70,
+        "p": 2,
+        "c": 12,
+        "f": 1.5
+      },
+      {
+        "name": "Mission Tortilla",
+        "cal": 70,
+        "p": 2,
+        "c": 12,
+        "f": 1.5
+      },
+      {
+        "name": "Mission Tortilla",
+        "cal": 70,
+        "p": 2,
+        "c": 12,
+        "f": 1.5
+      },
+      {
+        "name": "Air Fryer Chicken Breast (145g)",
+        "cal": 240,
+        "p": 45,
+        "c": 0,
+        "f": 5
+      },
+      {
+        "name": "Mayo Drizzle",
+        "cal": 30,
+        "p": 0,
+        "c": 0,
+        "f": 3
+      },
+      {
+        "name": "Honey Hot Sauce (low cal)",
+        "cal": 15,
+        "p": 0,
+        "c": 4,
+        "f": 0
+      }
+    ],
+    "lunch": [
+      {
+        "name": "Grilled Barracuda (6oz)",
+        "cal": 215,
+        "p": 42,
+        "c": 0,
+        "f": 5
+      },
+      {
+        "name": "White Rice (1.5 cups)",
+        "cal": 310,
+        "p": 6,
+        "c": 67,
+        "f": 1
+      },
+      {
+        "name": "Black Beans (1/3 cup)",
+        "cal": 75,
+        "p": 5,
+        "c": 13,
+        "f": 0
+      },
+      {
+        "name": "Coconut Shrimp (5 pcs)",
+        "cal": 320,
+        "p": 14,
+        "c": 22,
+        "f": 18
+      }
+    ],
+    "snacks": [
+      {
+        "name": "Swedish Candy Samples",
+        "cal": 150,
+        "p": 0,
+        "c": 35,
+        "f": 0
+      }
+    ]
   }
 }
