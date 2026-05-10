@@ -469,6 +469,27 @@
         "p": 0,
         "c": 35,
         "f": 0
+      },
+      {
+        "name": "Whey Protein (1 scoop, 35g)",
+        "cal": 130,
+        "p": 25,
+        "c": 4,
+        "f": 2
+      },
+      {
+        "name": "2% Organic Milk (191g)",
+        "cal": 96,
+        "p": 6,
+        "c": 9,
+        "f": 4
+      },
+      {
+        "name": "Almond Milk (269g)",
+        "cal": 35,
+        "p": 1,
+        "c": 1,
+        "f": 3
       }
     ]
   }
