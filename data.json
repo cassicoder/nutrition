@@ -578,32 +578,30 @@
     ]
   },
   "2026-05-12": {
-    "dinner": [
+    "breakfast": [
       {
-        "name": "Steak Tacos at home (x4 - steak, flour tortilla, queso, veggies, tzatziki)",
-        "cal": 1360,
-        "p": 116,
-        "c": 76,
-        "f": 60
-      },
-      {
-        "name": "White Rice (~1 cup cooked)",
-        "cal": 205,
-        "p": 4,
-        "c": 45,
+        "name": "Banana (medium)",
+        "cal": 105,
+        "p": 1,
+        "c": 27,
         "f": 0
       }
     ],
-    "snacks": [
-      {
-        "name": "Rice Krispies Treat (x2)",
-        "cal": 180,
-        "p": 2,
-        "c": 34,
-        "f": 4
-      }
-    ],
     "lunch": [
+      {
+        "name": "School Food Asian Chicken",
+        "cal": 300,
+        "p": 20,
+        "c": 30,
+        "f": 8
+      },
+      {
+        "name": "Protein Shake (milk + scoop)",
+        "cal": 200,
+        "p": 25,
+        "c": 12,
+        "f": 5
+      },
       {
         "name": "Eggs (4 large)",
         "cal": 280,
@@ -619,12 +617,28 @@
         "f": 5
       }
     ],
-    "breakfast": [
+    "snacks": [
       {
-        "name": "Banana (medium)",
-        "cal": 105,
-        "p": 1,
-        "c": 27,
+        "name": "Rice Krispies Treat (x2)",
+        "cal": 180,
+        "p": 2,
+        "c": 34,
+        "f": 4
+      }
+    ],
+    "dinner": [
+      {
+        "name": "Chicken Breast (170g)",
+        "cal": 280,
+        "p": 58,
+        "c": 0,
+        "f": 6
+      },
+      {
+        "name": "White Rice (~150g cooked)",
+        "cal": 195,
+        "p": 4,
+        "c": 43,
         "f": 0
       }
     ]
