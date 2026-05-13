@@ -546,7 +546,36 @@
         "f": 16
       }
     ],
-    "dinner": []
+    "dinner": [
+      {
+        "name": "Steak Tacos at home (x4 - steak, flour tortilla, queso, veggies, tzatziki)",
+        "cal": 1360,
+        "p": 116,
+        "c": 76,
+        "f": 60
+      },
+      {
+        "name": "White Rice (~1 cup cooked)",
+        "cal": 205,
+        "p": 4,
+        "c": 45,
+        "f": 0
+      },
+      {
+        "name": "Hummus (~2 tbsp)",
+        "cal": 70,
+        "p": 2,
+        "c": 6,
+        "f": 4
+      },
+      {
+        "name": "Tzatziki (~2 tbsp, extra)",
+        "cal": 50,
+        "p": 2,
+        "c": 2,
+        "f": 4
+      }
+    ]
   },
   "2026-05-12": {
     "breakfast": [
@@ -571,20 +600,6 @@
         "cal": 200,
         "p": 25,
         "c": 12,
-        "f": 5
-      },
-      {
-        "name": "Eggs (4 large)",
-        "cal": 280,
-        "p": 24,
-        "c": 2,
-        "f": 20
-      },
-      {
-        "name": "Airfried Chicken Breast (140g)",
-        "cal": 231,
-        "p": 43,
-        "c": 0,
         "f": 5
       }
     ],
