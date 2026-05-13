@@ -578,15 +578,6 @@
     ]
   },
   "2026-05-12": {
-    "breakfast": [
-      {
-        "name": "Banana (medium)",
-        "cal": 105,
-        "p": 1,
-        "c": 27,
-        "f": 0
-      }
-    ],
     "lunch": [
       {
         "name": "School Food Asian Chicken",
@@ -601,15 +592,6 @@
         "p": 25,
         "c": 12,
         "f": 5
-      }
-    ],
-    "snacks": [
-      {
-        "name": "Rice Krispies Treat (x2)",
-        "cal": 180,
-        "p": 2,
-        "c": 34,
-        "f": 4
       }
     ],
     "dinner": [
